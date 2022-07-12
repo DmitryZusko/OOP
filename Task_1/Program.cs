@@ -38,8 +38,8 @@ namespace Task_1
             Console.WriteLine($"Triginometric form of {complex4.GetComplexNumber()}: {trigonom},\nGet power of {power}: {pow},\nget root of {power}: {root}");
             Console.WriteLine("\n\t\t=================================\n");
 
-            complex1.real = 10;
-            complex1.imaginary = -10;
+            complex1.Real = 10;
+            complex1.Imaginary = -10;
             Console.WriteLine($"First number now is: {complex1.GetComplexNumber()}");
 
             Console.ReadLine();

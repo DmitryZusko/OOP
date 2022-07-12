@@ -7,8 +7,9 @@ namespace Task_1
 {
     class ComplexNumber
     {
-        public double real { get; set; }
-        public double imaginary { get; set; }
+        public double Real { get; set; }
+        public double Imaginary { get; set; }
+
         private const int PRECISION = 3;
 
         //default constructor
@@ -22,77 +23,56 @@ namespace Task_1
         {
             if (isComplex == true)
             {
-                imaginary = number;
+                Imaginary = number;
             }
             else
             {
-                real = number;
+                Real = number;
             }
         }
 
         public ComplexNumber(double real, double imaginary)
         {
-            this.real = real;
-            this.imaginary = imaginary;
+            this.Real = real;
+            this.Imaginary = imaginary;
         }
 
         public ComplexNumber(string complex)
         {
-            //Should I use operation .ToList(), if Split returns array?
             var values = complex.Split(" + i");
             Double.TryParse(values[0], out double real);
             Double.TryParse(values[1], out double imaginary);
-            this.real = real;
-            this.imaginary = imaginary;
-
+            this.Real = real;
+            this.Imaginary = imaginary;
         }
 
         public string GetComplexNumber()
         {
-            if (imaginary < 0)
+            if (Imaginary < 0)
             {
-                return $"{real} - i{-imaginary}";
+                return $"{Real} - i{-Imaginary}";
             }
-            return $"{real} + i{imaginary}";
+            return $"{Real} + i{Imaginary}";
         }
 
         public static ComplexNumber Addition(ComplexNumber complex1, ComplexNumber complex2)
         {
-            var complex3 = new ComplexNumber(complex1.real + complex2.real, complex1.imaginary + complex2.imaginary);
+            var complex3 = new ComplexNumber(complex1.Real + complex2.Real, complex1.Imaginary + complex2.Imaginary);
             return complex3;
         }
 
         public static ComplexNumber Substraction(ComplexNumber complex1, ComplexNumber complex2)
         {
-            var complex3 = new ComplexNumber(complex1.real - complex2.real, complex1.imaginary - complex2.imaginary);
+            var complex3 = new ComplexNumber(complex1.Real - complex2.Real, complex1.Imaginary - complex2.Imaginary);
             return complex3;
         }
 
         public static ComplexNumber Multiplication(ComplexNumber complex1, ComplexNumber complex2)
         {
             var complex3 = new ComplexNumber();
-            complex3.real = Math.Round(complex1.real * complex2.real - complex1.imaginary * complex2.imaginary, PRECISION);
-            complex3.imaginary = Math.Round(complex1.real * complex2.imaginary + complex1.imaginary * complex2.real, PRECISION);
+            complex3.Real = Math.Round(complex1.Real * complex2.Real - complex1.Imaginary * complex2.Imaginary, PRECISION);
+            complex3.Imaginary = Math.Round(complex1.Real * complex2.Imaginary + complex1.Imaginary * complex2.Real, PRECISION);
             return complex3;
-        }
-
-        private double GetABS()
-        {
-            if (real != 0 && imaginary != 0)
-            {
-                return Math.Round(Math.Sqrt(Math.Pow(real, 2) + Math.Pow(imaginary, 2)), PRECISION);
-            }
-            return 0;
-
-        }
-
-        private double GetAngle()
-        {
-            if (real != 0 && imaginary != 0)
-            {
-                return Math.Round(Math.Asin(real / GetABS()), PRECISION);
-            }
-            return 0;
         }
 
         public string GetTrigonomForm()
@@ -114,6 +94,27 @@ namespace Task_1
             var z = Math.Pow(GetABS(), 1 / n);
             var phi = GetAngle() / n;
             return $"{z}(cos({phi}) + i sin({phi}))";
+        }
+
+
+
+        private double GetABS()
+        {
+            if (Real != 0 && Imaginary != 0)
+            {
+                return Math.Round(Math.Sqrt(Math.Pow(Real, 2) + Math.Pow(Imaginary, 2)), PRECISION);
+            }
+            return 0;
+
+        }
+
+        private double GetAngle()
+        {
+            if (Real != 0 && Imaginary != 0)
+            {
+                return Math.Round(Math.Asin(Real / GetABS()), PRECISION);
+            }
+            return 0;
         }
 
     }
