@@ -63,37 +63,21 @@ namespace Task_2
 
         public static bool operator >(Vector vec1, Vector vec2)
         {
-            if (vec1.Length() > vec2.Length())
-            {
-                return true;
-            }
-            return false;
+            return vec1.Length() > vec2.Length();
         }
 
         public static bool operator <(Vector vec1, Vector vec2)
         {
-            if (vec1.Length() < vec2.Length())
-            {
-                return true;
-            }
-            return false;
+            return vec1.Length() < vec2.Length();
         }
 
         public static bool operator ==(Vector vec1, Vector vec2)
         {
-            if (vec1.Length() == vec2.Length())
-            {
-                return true;
-            }
-            return false;
+            return vec1.Length() == vec2.Length();
         }
         public static bool operator !=(Vector vec1, Vector vec2)
         {
-            if (vec1.Length() != vec2.Length())
-            {
-                return true;
-            }
-            return false;
+            return vec1.Length() != vec2.Length();
         }
 
 
