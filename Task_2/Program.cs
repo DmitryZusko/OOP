@@ -12,7 +12,7 @@ namespace Task_2
         static void Main(string[] args)
         {
             var vec1 = new Vector("(-1, -2, -3)");
-            var vec2 = new Vector { x = -1, y = -2, z = -3 };
+            var vec2 = new Vector { X = -1, Y = -2, Z = -3 };
 
             Console.WriteLine($"Vec1: {vec1.GetVector()}\nvec2: {vec2.GetVector()}");
             Console.WriteLine($"vec1 + vec2 = {(vec1 + vec2).GetVector()}");
@@ -24,7 +24,7 @@ namespace Task_2
             Console.WriteLine($"Is vec1 < vec2: {vec1 < vec2}");
             Console.WriteLine($"Is vec1 = vec2: {vec1 == vec2}");
             Console.WriteLine($"Is vec1 neq vec2: {vec1 != vec2}");
-            Console.WriteLine($"The program created {Vector._vectorCount} vector(-s)");
+            Console.WriteLine($"The program created {Vector.VectorCount} vector(-s)");
 
             Console.ReadLine();
         }
