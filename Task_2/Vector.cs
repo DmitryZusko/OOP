@@ -7,14 +7,15 @@ namespace Task_2
 {
     class Vector
     {
-        public int x { get; set; }
-        public int y { get; set; }
-        public int z { get; set; }
-        public static int _vectorCount { get; private set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Z { get; set; }
+
+        public static int VectorCount { get; private set; }
 
         public Vector()
         {
-            _vectorCount++;
+            VectorCount++;
         }
 
         public Vector(string vector)
@@ -24,45 +25,40 @@ namespace Task_2
             int.TryParse(coordinates[0].ToString(), out int x);
             int.TryParse(coordinates[1].ToString(), out int y);
             int.TryParse(coordinates[2].ToString(), out int z);
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            _vectorCount++;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+            VectorCount++;
         }
 
         public string GetVector()
         {
-            return $"({x}, {y}, {z})";
+            return $"({X}, {Y}, {Z})";
         }
 
         public static Vector operator +(Vector vec1, Vector vec2)
         {
-            return new Vector { x = vec1.x + vec2.x, y = vec1.y + vec2.y, z = vec1.z + vec2.z };
+            return new Vector { X = vec1.X + vec2.X, Y = vec1.Y + vec2.Y, Z = vec1.Z + vec2.Z };
         }
 
         public static Vector operator -(Vector vec1, Vector vec2)
         {
-            return new Vector { x = vec1.x - vec2.x, y = vec1.y - vec2.y, z = vec1.z - vec2.z };
+            return new Vector { X = vec1.X - vec2.X, Y = vec1.Y - vec2.Y, Z = vec1.Z - vec2.Z };
         }
 
         public static double operator *(Vector vec1, Vector vec2)
         {
-            return vec1.x * vec2.x + vec1.y * vec2.y + vec1.z * vec2.z;
+            return vec1.X * vec2.X + vec1.Y * vec2.Y + vec1.Z * vec2.Z;
         }
 
         public static Vector operator *(Vector vec1, int number)
         {
-            return new Vector { x = vec1.x * number, y = vec1.y * number, z = vec1.z * number };
+            return new Vector { X = vec1.X * number, Y = vec1.Y * number, Z = vec1.Z * number };
         }
 
         public static Vector operator *(int number, Vector vec1)
         {
-            return new Vector { x = vec1.x * number, y = vec1.y * number, z = vec1.z * number };
-        }
-
-        private double Length()
-        {
-            return Math.Sqrt(x * x + y * y + z * z);
+            return new Vector { X = vec1.X * number, Y = vec1.Y * number, Z = vec1.Z * number };
         }
 
         public static bool operator >(Vector vec1, Vector vec2)
@@ -100,6 +96,12 @@ namespace Task_2
             return false;
         }
 
+
+
+        private double Length()
+        {
+            return Math.Sqrt(X * X + Y * Y + Z * Z);
+        }
 
 
 
