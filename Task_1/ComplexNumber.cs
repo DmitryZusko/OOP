@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Task_1
 {
-    class ComplexNumber
+    class ComplexNumber : IComparable<ComplexNumber>, IEquatable<ComplexNumber>
     {
         public double Real { get; set; }
         public double Imaginary { get; set; }
@@ -46,33 +47,13 @@ namespace Task_1
             this.Imaginary = imaginary;
         }
 
-        public string GetComplexNumber()
+        public override string ToString()
         {
             if (Imaginary < 0)
             {
                 return $"{Real} - i{-Imaginary}";
             }
             return $"{Real} + i{Imaginary}";
-        }
-
-        public static ComplexNumber Addition(ComplexNumber complex1, ComplexNumber complex2)
-        {
-            var complex3 = new ComplexNumber(complex1.Real + complex2.Real, complex1.Imaginary + complex2.Imaginary);
-            return complex3;
-        }
-
-        public static ComplexNumber Substraction(ComplexNumber complex1, ComplexNumber complex2)
-        {
-            var complex3 = new ComplexNumber(complex1.Real - complex2.Real, complex1.Imaginary - complex2.Imaginary);
-            return complex3;
-        }
-
-        public static ComplexNumber Multiplication(ComplexNumber complex1, ComplexNumber complex2)
-        {
-            var complex3 = new ComplexNumber();
-            complex3.Real = Math.Round(complex1.Real * complex2.Real - complex1.Imaginary * complex2.Imaginary, PRECISION);
-            complex3.Imaginary = Math.Round(complex1.Real * complex2.Imaginary + complex1.Imaginary * complex2.Real, PRECISION);
-            return complex3;
         }
 
         public string GetTrigonomForm()
@@ -96,6 +77,54 @@ namespace Task_1
             return $"{z}(cos({phi}) + i sin({phi}))";
         }
 
+        public int CompareTo(ComplexNumber complex2)
+        {
+            switch (GetABS() - complex2.GetABS())
+            {
+                case > 0:
+                    {
+                        return 1;
+                    }
+                case < 0:
+                    {
+                        return -1;
+                    }
+                default:
+                    {
+                        return 0;
+                    }
+
+            }
+        }
+
+        public bool Equals(ComplexNumber complex2)
+        {
+            if (Real == complex2.Real && Imaginary == complex2.Imaginary)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        public static ComplexNumber operator +(ComplexNumber complex1, ComplexNumber complex2)
+        {
+            return new ComplexNumber { Real = complex1.Real + complex2.Real, Imaginary = complex1.Imaginary + complex2.Imaginary };
+        }
+
+        public static ComplexNumber operator -(ComplexNumber complex1, ComplexNumber complex2)
+        {
+            var complex3 = new ComplexNumber(complex1.Real - complex2.Real, complex1.Imaginary - complex2.Imaginary);
+            return new ComplexNumber { Real = complex1.Real - complex2.Real, Imaginary = complex1.Imaginary - complex2.Imaginary };
+        }
+
+        public static ComplexNumber operator *(ComplexNumber complex1, ComplexNumber complex2)
+        {
+            var complex3 = new ComplexNumber();
+            complex3.Real = Math.Round(complex1.Real * complex2.Real - complex1.Imaginary * complex2.Imaginary, PRECISION);
+            complex3.Imaginary = Math.Round(complex1.Real * complex2.Imaginary + complex1.Imaginary * complex2.Real, PRECISION);
+            return complex3;
+        }
 
 
         private double GetABS()
@@ -116,6 +145,5 @@ namespace Task_1
             }
             return 0;
         }
-
     }
 }
