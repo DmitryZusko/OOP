@@ -17,17 +17,17 @@ namespace Task_1
             var complex4 = new ComplexNumber(6, 8);
             var complex5 = new ComplexNumber("2,18 + i7,32");
 
-            Console.WriteLine($"First number: {complex1.GetComplexNumber()},\nSecond number: {complex2.GetComplexNumber()},\nThird number: {complex3.GetComplexNumber()}" +
-                $",\nFourth number: {complex4.GetComplexNumber()},\nFifth number: {complex5.GetComplexNumber()}");
+            Console.WriteLine($"First number: {complex1.ToString()},\nSecond number: {complex2.ToString()},\nThird number: {complex3.ToString()}" +
+                $",\nFourth number: {complex4.ToString()},\nFifth number: {complex5.ToString()}");
             Console.WriteLine("\n\t\t=================================\n");
 
-            var addition = ComplexNumber.Addition(complex1, complex2);
-            var substraction = ComplexNumber.Substraction(complex3, complex4);
-            var multiplication = ComplexNumber.Multiplication(complex5, complex4);
+            var addition = complex1 + complex2;
+            var substraction = complex3- complex4;
+            var multiplication = complex5 * complex4;
 
-            Console.WriteLine($"({complex1.GetComplexNumber()}) + ({complex2.GetComplexNumber()}) = {addition.GetComplexNumber()}," +
-                $"\n({complex3.GetComplexNumber()}) - ({complex4.GetComplexNumber()}) = {substraction.GetComplexNumber()}," +
-                $"\n({complex5.GetComplexNumber()}) * ({complex4.GetComplexNumber()}) = {multiplication.GetComplexNumber()}");
+            Console.WriteLine($"({complex1.ToString()}) + ({complex2.ToString()}) = {addition.ToString()}," +
+                $"\n({complex3.ToString()}) - ({complex4.ToString()}) = {substraction.ToString()}," +
+                $"\n({complex5.ToString()}) * ({complex4.ToString()}) = {multiplication.ToString()}");
             Console.WriteLine("\n\t\t=================================\n");
 
             byte power = 5;
@@ -35,12 +35,12 @@ namespace Task_1
             var pow = complex4.GetComplexPow(power);
             var root = complex4.GetComplexRoot(power);
 
-            Console.WriteLine($"Triginometric form of {complex4.GetComplexNumber()}: {trigonom},\nGet power of {power}: {pow},\nget root of {power}: {root}");
+            Console.WriteLine($"Triginometric form of {complex4.ToString()}: {trigonom},\nGet power of {power}: {pow},\nget root of {power}: {root}");
             Console.WriteLine("\n\t\t=================================\n");
 
             complex1.Real = 10;
             complex1.Imaginary = -10;
-            Console.WriteLine($"First number now is: {complex1.GetComplexNumber()}");
+            Console.WriteLine($"First number now is: {complex1.ToString()}");
 
             Console.ReadLine();
         }
