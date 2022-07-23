@@ -99,11 +99,7 @@ namespace Task_1
 
         public bool Equals(ComplexNumber complex2)
         {
-            if (Real == complex2.Real && Imaginary == complex2.Imaginary)
-            {
-                return true;
-            }
-            return false;
+            return Real == complex2.Real && Imaginary == complex2.Imaginary;
         }
 
 
@@ -114,16 +110,16 @@ namespace Task_1
 
         public static ComplexNumber operator -(ComplexNumber complex1, ComplexNumber complex2)
         {
-            var complex3 = new ComplexNumber(complex1.Real - complex2.Real, complex1.Imaginary - complex2.Imaginary);
             return new ComplexNumber { Real = complex1.Real - complex2.Real, Imaginary = complex1.Imaginary - complex2.Imaginary };
         }
 
         public static ComplexNumber operator *(ComplexNumber complex1, ComplexNumber complex2)
         {
-            var complex3 = new ComplexNumber();
-            complex3.Real = Math.Round(complex1.Real * complex2.Real - complex1.Imaginary * complex2.Imaginary, PRECISION);
-            complex3.Imaginary = Math.Round(complex1.Real * complex2.Imaginary + complex1.Imaginary * complex2.Real, PRECISION);
-            return complex3;
+            return new ComplexNumber
+            {
+                Real = Math.Round(complex1.Real * complex2.Real - complex1.Imaginary * complex2.Imaginary, PRECISION),
+                Imaginary = Math.Round(complex1.Real * complex2.Imaginary + complex1.Imaginary * complex2.Real, PRECISION)
+            };
         }
 
 
